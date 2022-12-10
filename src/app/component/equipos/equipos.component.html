@@ -1,0 +1,129 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <br>
+
+    <h1>Ingresar Equipo</h1>
+    <hr>
+    <form autocomplete="off" (ngSubmit)="guardarGrid()" #formaGuardar="ngForm">
+        <div class="form-group row">
+            <div class="form-group row">
+                <div class="input-group col-md-8">
+                    <button type="submit" class="btn btn-outline-primary btn-block">
+                        Agregar
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div>
+
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Nombre</label>
+                <div class="col-8">
+                    <input class="form-control" type="text" [(ngModel)]="equipo2.nombre"
+                        [ngModelOptions]="{standalone: true}" placeholder="Nombre">
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Organizador</label>
+            <div class="col-8">
+                <select class="form-select" [(ngModel)]="equipo2.usuario" [ngModelOptions]="{standalone: true}">
+                    <option [ngValue]="usuario" *ngFor="let usuario of usuarioSe">
+                        {{usuario.nombre}} {{usuario.apellido}}
+                    </option>
+                </select>
+            </div>
+        </div>
+    </form>
+    <div>
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Categorias</label>
+            <div class="col-8">
+                <select class="form-select" [(ngModel)]="equipo2.categoria" [ngModelOptions]="{standalone: true}">
+                    <option [ngValue]="categoria" *ngFor="let categoria of categoriaS">
+                        {{categoria.nombre}} {{categoria.genero}} {{categoria.descripcion}}
+                    </option>
+                </select>
+            </div>
+            <div>
+                <div>
+                    <div>
+                        <button (click)="agregarEquiposaCampeonato()" class="btn btn-outline-primary btn-block">
+                            Agregar Equipos
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Equipo</th>
+                        <th scope="col">Organizador</th>
+                        <th scope="col">Categoria</th>
+                        <!-- <th scope="col">Organizador</th> -->
+                        <!-- <th scope="col">Acciones</th> -->
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- <tr *ngFor="let equipo of equipoGrid " (click)="verIngresarJugador(equipo)">
+            <td scope="row" >{{equipo.id}}</td>
+            <td scope="row" >{{equipo.nombre}}</td>
+            <td scope="row" >{{equipo.usuario.nombre}} {{equipo.usuario.apellido}}</td>
+            <a (click)="eliminarEquipo(equipo.id)" class="btn btn-outline-primary">Eliminar</a>
+        </tr> -->
+
+                    <tr *ngFor="let equipo of equipoGrid ">
+                        <!--(click)="verIngresarJugador(equipo)> -->
+                        <td scope="row">{{equipo.id}}</td>
+                        <!-- <td scope="row" >{{equipo.id}}</td> -->
+                        <td scope="row">{{equipo.nombre}}</td>
+                        <td scope="row">{{equipo.usuario.nombre}} {{equipo.usuario.apellido}}</td>
+                        <td scope="row">{{equipo.categoria.nombre}} {{equipo.categoria.genero}}</td>
+                        <!-- <a (click)="verEquipo(equipo.id)" class="btn btn-outline-primary">Agregar</a> -->
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+
+
+    <div *ngIf="mostrar" class="container">
+        <h1>Ingresar Jugador</h1>
+        <hr>
+        <form autocomplete="off" (ngSubmit)="guardarJugador(formaGuardar)" #formaGuardar="ngForm">
+            <div>
+
+                <div class="form-group row">
+                    <label class="col-2 col-form-label">Equipo</label>
+                    <div class="col-8">
+                        <input class="form-control" type="text" name="equipo" [ngModel]="equipoSe.nombre">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Jugador</label>
+                <div class="col-8">
+                    <select class="form-select" name="usuario" ngModel>
+                        <option [ngValue]="usuario" *ngFor="let usuario of usuarioSe">
+                            {{usuario.nombre}} {{usuario.apellido}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="form-group row">
+                    <div class="input-group col-md-8">
+                        <button type="submit" class="btn btn-outline-primary btn-block">
+                            Guardar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>

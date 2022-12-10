@@ -1,0 +1,36 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <div *ngIf="ocultar" class="navbar" id="navbarNav">
+        <ul class="navbar-nav">
+  
+          <li class="nav-item">
+            <a class="nav-link " *ngIf="ocultar" href="campeonato ">Campeonatos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " *ngIf="ocultar" href="equipos/1">Equipos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " *ngIf="ocultar" href="inscripciones">Inscripciones</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " *ngIf="ocultar" href="categorias">Categorias</a>
+          </li>
+        </ul>
+      </div>
+      <div *ngIf="!ocultar" class="navbar container-fluid" id="navbarNav">
+        <ul class="nav-item ">
+          <a class="nav-link"  href="/login"> Iniciar Sesion </a>
+        </ul>
+      </div>
+      <div *ngIf="ocultar" class="navbar" id="navbarNav">
+        <ul  class="nav-item ">
+          <a class="nav-link" href="/usuario"> Bienvenido {{usuario.nombre}} {{usuario.apellido}}</a>
+        </ul>
+      </div>
+      <div *ngIf="ocultar" class="navbar" id="navbarNav">
+        <ul  class="nav-item ">
+          <a class="nav-link" href="#" (click)="logout()">Cerrar Sesion</a>
+        </ul>
+      </div>
+    </div>
+  </nav>

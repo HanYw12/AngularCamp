@@ -1,0 +1,27 @@
+<app-navbar></app-navbar>
+
+<h1 style="text-align:center" >{{jugadores[1].equipo.nombre}}</h1>
+
+<div class="container">
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Apellido</th>
+        <th scope="col">Cedula</th>
+        <th scope="col">Edad</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let jugadores of jugadores ">
+        <td scope="row" >{{jugadores.id}}</td>
+        <td scope="row" >{{jugadores.usuario.nombre}}</td>
+        <td scope="row" >{{jugadores.usuario.apellido}}</td>
+        <td scope="row" >{{jugadores.usuario.cedula}}</td>
+        <td scope="row" >{{jugadores.usuario.fechaNacimiento|date}}</td>
+        <a  class="btn btn-outline-primary">Ver Equipos</a>
+    </tr>
+    </tbody>
+  </table>
+

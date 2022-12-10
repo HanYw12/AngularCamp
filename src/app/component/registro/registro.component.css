@@ -1,0 +1,35 @@
+
+
+.boxRegistro input {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    background: transparent;
+}
+
+.boxRegistro label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    pointer-events: none;
+    transition: .5s;
+}
+
+.scrolling-parent {
+    height: 100px;
+    width: 200px;
+    border: 1px solid black;
+    padding: 8px;
+    overflow-y: auto;
+}
+.scrolling-item {
+    height: 50px;
+}

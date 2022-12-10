@@ -1,0 +1,71 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Categoria</th>
+                <th scope="col">Descripcion</th>
+                <th scope="col">Genero</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let categoria of categoriaT ">
+                <td scope="row">{{categoria.id}}</td>
+                <td scope="row">{{categoria.nombre}}</td>
+                <td scope="row">{{categoria.descripcion}}</td>
+                <td scope="row">{{categoria.genero}}</td>
+                <a (click)="verCategoria(categoria.id)" class="btn btn-outline-primary">Ver Equipos</a>
+            </tr>
+        </tbody>
+    </table>
+
+    <br>
+
+    <h1>Ingresar Categoria</h1>
+    <hr>
+    <form autocomplete="off" (ngSubmit)="guardar(formaGuardar)" #formaGuardar="ngForm">
+        <div>
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Nombre</label>
+                <div class="col-8">
+                    <input class="form-control" type="text" name="nombre" ngModel placeholder="Nombre">
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Descripcion</label>
+                <div class="col-8">
+                    <input class="form-control" type="text" name="descripcion" ngModel placeholder="Descripcion">
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-2 col-form-label">genero</label>
+            <div class="col-8">
+                <select class="form-select" name="genero" ngModel>
+                    <option value="femenino">
+                        Femenino
+                    </option>
+                    <option value="masculino">
+                        Masculino
+                    </option>
+                    <option value="mixto">
+                        Mixto
+                    </option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="form-group row">
+                <div class="input-group col-md-8">
+                    <button type="submit" class="btn btn-outline-primary btn-block">
+                        Guardar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

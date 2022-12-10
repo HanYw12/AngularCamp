@@ -1,0 +1,117 @@
+<body>
+    
+
+    <app-navbar></app-navbar>
+
+    <mat-drawer-container hasBackdrop="False">
+        <mat-drawer #edit mode='over' position="end">
+                <app-campeonatoedit></app-campeonatoedit>
+        </mat-drawer>
+        <mat-drawer-content>
+            <div class="container">
+                    <!-- <input matInput (keyup)="applyFilter($event)" placeholder="Buscar Campeonato" #input /> -->
+                    <div class="example-header">
+                        <mat-form-field>
+                          <input matInput 
+                          (keyup)="applyFilter($event)" 
+                          placeholder="Campeonato">
+                        </mat-form-field>
+
+                        <button type="button" class="btn btn-primary" (click)="edit.toggle()"
+                        (click)="editarCampeonato(0)">
+                            Crear Nuevo
+                        </button>
+                    </div>
+
+                <div class="example-container mat-elevation-z8">
+
+                    <mat-table [dataSource]="dataSource" matSort>
+                        <!-- Position Column -->
+                        <ng-container matColumnDef="id">
+                            <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header> No. </mat-header-cell>
+                            <mat-cell mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+                        </ng-container>
+
+                        <!-- Nombre Column -->
+                        <ng-container matColumnDef="nombre">
+                            <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header> Campeonato </mat-header-cell>
+                            <mat-cell mat-cell *matCellDef="let element"> {{element.nombre}} </mat-cell>
+                        </ng-container>
+
+                        <!-- Lugar Column -->
+                        <ng-container matColumnDef="lugar" >
+                            <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header > Lugar </mat-header-cell>
+                            <mat-cell mat-cell *matCellDef="let element"> {{element.lugar}} </mat-cell>
+                        </ng-container>
+
+                        <!-- logo Column -->
+                        <ng-container matColumnDef="logo">
+                            <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header> Logo </mat-header-cell>
+                            <mat-cell mat-cell *matCellDef="let element"> {{element.logo}} </mat-cell>
+                        </ng-container>
+
+                        <!-- Organizador Column -->
+                        <ng-container matColumnDef="usuarios">
+                            <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header> Organizador </mat-header-cell>
+                            <mat-cell mat-cell *matCellDef="let element"> {{element.usuarios.nombre}}
+                                {{element.usuarios.apellido}} </mat-cell>
+                        </ng-container>
+
+                        <!-- Organizador Column -->
+                        <ng-container matColumnDef="fecha">
+                            <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header> Fecha de inicio </mat-header-cell>
+                            <mat-cell mat-cell *matCellDef="let element"> {{element.fechaInicio|date:'fullDate'}} </mat-cell>
+                        </ng-container>
+
+                        <!-- Organizador Column -->
+                        <!-- <ng-container matColumnDef="categorias">
+                            <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header> Categorias </mat-header-cell>
+                            <mat-cell mat-cell *matCellDef="let element">
+                                <ng-container *ngIf="element.boolCategoria">
+                                    <ul *ngFor="let categoria of element.categorias">
+                                        <li>{{categoria.nombre}} {{categoria.genero}}</li>
+                                    </ul>
+                                </ng-container>
+                                <label *ngIf="!element.boolCategoria">
+                                    Ingresar Categorias
+                                </label>
+                            </mat-cell>
+                        </ng-container> -->
+
+                        <!-- Organizador Column -->
+                        <ng-container matColumnDef="acciones">
+                            <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header> Acciones </mat-header-cell>
+                            <mat-cell mat-cell *matCellDef="let element">
+                                <a mat-mini-fab class="Accent" title="Ver Campeonato"
+                                    (click)="verCampeonato(element.id)">
+                                    <mat-icon>search </mat-icon>
+                                </a>
+
+                                <a mat-mini-fab title="Agregar Equipos" (click)="ingresoEquipos(element.id)">
+                                    <mat-icon color="primary">person_add</mat-icon>
+                                </a>
+
+                                <a mat-mini-fab title="Editar Campeonato" (click)="edit.toggle()"
+                                    (click)="editarCampeonato(element.id)">
+                                    <mat-icon color="primary">edit</mat-icon>
+                                </a>
+
+                                <a mat-mini-fab title="Eliminar Campeonato" (click)="eliminarCampeonato(element.id)">
+                                    <mat-icon color="warn">delete_outline</mat-icon>
+                                </a>
+
+                            </mat-cell>
+                        </ng-container>
+                        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                        <mat-row *matRowDef="let row; columns: displayedColumns;">
+                        </mat-row>
+                      </mat-table>
+                    
+                      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+                </div>
+            </div>
+        </mat-drawer-content>
+    </mat-drawer-container>
+
+
+</body>
