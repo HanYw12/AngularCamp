@@ -1,93 +1,113 @@
-<div class="boxRegistro">
-<h1>Ingresar Usuario</h1>
-    <hr>
-    <form autocomplete="off" (ngSubmit)="guardar(formaGuardar)" #formaGuardar="ngForm">
-        <div >
-            <div class="form-group row">
-                <label class="col-2 col-form-label">Usuario</label>
-                <div class="col-8">
-                    <input class="form-control" type="text" name="usuario" [ngModel]="usuarioE?.usuario"
-                        placeholder="Usuario ejemplo mjordan">
+<!-- <div class="Registro-box"> -->
+<h2>Registrar Usuario</h2>
+<hr>
 
-                </div>
-            </div>
-            <div class="form-group row">
-                <label class="col-2 col-form-label">Nombre</label>
-                <div class="col-8">
-                    <input class="form-control" type="text" name="nombre" [ngModel]="usuarioE?.nombre"
-                        placeholder="Nombre">
+<form [formGroup]="myFormRegistro" autocomplete="off">
+    <div class="user-box">
+        <input matInput autocomplete="off" name="usuario" formControlName="usuario" type="text">
+        <label>Usuario (mJordan) </label>
+        <span
+            *ngIf="this.myFormRegistro.get('usuario')?.errors?.['required'] && this.myFormRegistro.get('usuario')?.touched">
+            Introduzca un Usuario
+        </span>
+    </div>
 
-                </div>
-            </div>
-            <div class="form-group row">
-                <label class="col-2 col-form-label">Apellido</label>
-                <div class="col-8">
-                    <input class="form-control" type="text" name="apellido" [ngModel]="usuarioE?.apellido"
-                        placeholder="Apellido">
-                </div>
-            </div>
-            <div class="form-group row">
-                <label class="col-2 col-form-label">Cedula</label>
-                <div class="col-8">
-                    <input class="form-control" type="text" placeholder="Cedula" name="cedula"
-                        [ngModel]="usuarioE?.cedula">
-                </div>
-            </div>
-            <div class="form-group row">
-                <label class="col-2 col-form-label">Fecha de Nacimiento</label>
-                <div class="col-8">
-                    <input class="form-control" type="date" name="fechaNacimiento"
-                        [ngModel]="usuarioE?.fechaNacimiento">
-                </div>
-            </div>
-            <div class="form-group row">
-                <label class="col-2 col-form-label">Correo</label>
-                <div class="col-8">
-                    <input class="form-control" type="text" placeholder="Correo" name="correo"
-                        [ngModel]="usuarioE?.correo">
-                </div>
-            </div>
-            <div class="form-group row">
-                <label class="col-2 col-form-label">Contraseña</label>
-                <div class="col-8">
-                    <input class="form-control" type="text" placeholder="Contraseña" name="contrasena"
-                        [ngModel]="usuarioE?.contrasena">
-                </div>
-            </div>
+    <div class="user-box">
+        <input matInput autocomplete="off" name="nombre" type="text" formControlName="nombre">
+        <label>Nombre</label>
+        <span
+            *ngIf="this.myFormRegistro.get('nombre')?.errors?.['required'] && this.myFormRegistro.get('nombre')?.touched">
+            Introduzca los Nombres
+        </span>
+    </div>
 
-            <div class="form-group row">
-                <label class="col-2 col-form-label">Rol</label>
-                <div class="col-8">
-                    <select class="form-select" name="roles" ngModel>
-                        <option [ngValue]="rol" *ngFor="let rol of rolesSe">
-                            {{rol.rol}}
-                        </option>
-                    </select>
-                </div>
-            </div>
-        </div>
-        <div class="form-group row">
-            <label class="col-2 col-form-label">genero</label>
-            <div class="col-8">
-                <select class="form-select" name="genero" ngModel>
-                    <option value="femenino">
-                        Femenino
-                    </option>
-                    <option value="masculino">
-                        Masculino
-                    </option>
-                </select>
-            </div>
-        </div>
-        <br>
-        <div class="form-group row">
-            <div class="form-group row">
-                <div class="input-group col-md-8">
-                    <button type="submit" class="btn btn-outline-primary btn-block">
-                        Guardar
-                    </button>
-                </div>
-            </div>
-        </div>
-    </form>
-</div>
+    <div class="user-box">
+        <input matInput autocomplete="off" name="apellido" formControlName="apellido" type="text">
+        <label>Apellido</label>
+        <span
+            *ngIf="this.myFormRegistro.get('apellido')?.errors?.['required'] && this.myFormRegistro.get('apellido')?.touched">
+            Introduzca los Apellidos
+        </span>
+    </div>
+
+    <!-- <div>
+            <input autocomplete="off" name="documento" formControlName="documento"  type="radio">
+            <input autocomplete="off" name="documento" formControlName="documento"  type="radio">
+        </div> -->
+
+
+    <div class="user-box">
+        <input matInput autocomplete="off" name="documento" formControlName="documento" type="text">
+        <label>Identificacion</label>
+        <span
+            *ngIf="this.myFormRegistro.get('documento')?.errors?.['required'] && this.myFormRegistro.get('documento')?.touched">
+            Introduzca la Identificacion
+        </span>
+    </div>
+
+    <div class="user-box">
+        <input autocomplete="off" name="fechaNacimiento" formControlName="fechaNacimiento" type="date">
+        <label>Fecha de Nacimiento </label>
+        <span
+            *ngIf="this.myFormRegistro.get('fechaNacimiento')?.errors?.['required'] && this.myFormRegistro.get('fechaNacimiento')?.touched">
+            Sin fecha de Nacimiento
+        </span>
+    </div>
+
+    <div class="user-box">
+        <input matInput autocomplete="off" name="correo" formControlName="correo" type="text" autocomplete="off">
+        <label>Correo</label>
+        <span
+            *ngIf="this.myFormRegistro.get('correo')?.errors?.['required'] && this.myFormRegistro.get('correo')?.touched">
+            Introduzca un correo valido
+        </span>
+    </div>
+
+    <div class="user-box">
+        <input matInput autocomplete="off" name="contrasena" formControlName="contrasena" type="password"
+            autocomplete="off">
+        <label>Contraseña</label>
+        <span
+            *ngIf="this.myFormRegistro.get('contrasena')?.errors?.['required'] && this.myFormRegistro.get('contrasena')?.touched">
+            Introduzca su Contraseña
+        </span>
+    </div>
+
+    <!-- <div class="user-box">
+            <select class="form-select" name="roles" formControlName="roles">
+                <option [ngValue]="rol" *ngFor="let rol of rolesSe">
+                    {{rol.rol}}
+                </option>
+            </select>
+            <label>Roles</label>
+            <span  *ngIf="this.myFormRegistro.get('roles')?.errors?.['required'] && this.myFormRegistro.get('roles')?.touched">
+                Introduzca un nombre
+            </span>
+        </div> -->
+
+    <div class="user-box">
+        <select class="form-select" name="genero" formControlName="genero">
+            <option value="femenino">
+                Femenino
+            </option>
+            <option value="masculino">
+                Masculino
+            </option>
+        </select>
+        <label>Genero</label>
+        <span
+            *ngIf="this.myFormRegistro.get('genero')?.errors?.['required'] && this.myFormRegistro.get('genero')?.touched">
+            Introduzca un nombre
+        </span>
+    </div>
+
+    <div>
+        <button type="submit" [disabled]="!this.myFormRegistro.valid" (click)="guardar(myFormRegistro)">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Guardar
+        </button>
+    </div>
+</form>

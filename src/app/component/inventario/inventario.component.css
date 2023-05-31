@@ -1,0 +1,167 @@
+.container{
+    width: 100%;
+}
+
+.example-sidenav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 40%;
+}
+
+.cont{
+    margin: 5px;
+}
+
+
+mat-drawer-container{
+    padding: 0%;
+    margin: 0%;
+    width: 100%;
+    height: 600px;
+    padding: 0%;
+}
+
+input{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+
+/* .codigoCol{
+    width: 33.33%;
+    box-sizing: border-box;
+    padding: 8px;
+    text-align: left;
+} */
+
+
+/* tabla */
+
+.table-container{
+    width: 98%;
+    overflow-x: auto;
+}
+mat-header-row{
+    justify-content: start !important;
+    width: 1920px;
+}
+mat-paginator{
+    width: 1920px;
+}
+mat-row{
+    width: 1920px;
+}
+
+mat-paginator-outer-container {
+    justify-content: start !important;
+}
+.contentPag{
+    justify-content: flex-start !important;
+}
+.mat-column{
+    margin-left: 5px;
+}
+
+.mat-column-codigo {
+    flex: none !important;
+    width: 150px !important;
+}
+
+.mat-column-descripcionProducto {
+    flex: none !important;
+    width: 300px !important;
+}
+
+
+.mat-column-precio {
+    flex: none !important;
+    width: 50px !important;
+    text-align: left;
+
+}
+
+.mat-column-costo {
+    flex: none !important;
+    width: 50px !important;
+    text-align: left;
+
+}
+
+
+.mat-column-unidadAlmacen {
+    flex: none !important;
+    width: 50px !important;
+}
+
+
+.mat-column-cantidadMinima {
+    flex: none !important;
+    width: 50px !important;
+}
+
+.mat-column-utilidad {
+    flex: none !important;
+    width: 50px !important;
+}
+
+.mat-column-facturarSinExistencia {
+    flex: none !important;
+    width: 80px !important;
+}
+
+.mat-column-impuestos {
+    flex: none !important;
+    width: 50px !important;
+}
+
+.mat-column-categoria {
+    flex: none !important;
+    width: 150px !important;
+}
+
+.mat-column-nombreBodega {
+    flex: none !important;
+    width: 150px !important;
+}
+
+.mat-column-codigoFabricante {
+    flex: none !important;
+    width: 150px !important;
+}
+
+.mat-column-impuestoVentas {
+    flex: none !important;
+    width: 80px !important;
+}
+
+.mat-column-impuestoCompras {
+    flex: none !important;
+    width: 80px !important;
+}
+
+.mat-column-nroSeries {
+    flex: none !important;
+    width: 150px !important;
+}
+
+.mat-column-unidadVenta {
+    flex: none !important;
+    width: 50px !important;
+}
+
+.mat-column-unidadCompra {
+    flex: none !important;
+    width: 50px !important;
+}
+
+.mat-column-equivalenciaCompra {
+    flex: none !important;
+    width: 80px !important;
+}
+
+.mat-column-ubicacion {
+    flex: none !important;
+    width: 150px !important;
+}
+

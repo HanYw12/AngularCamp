@@ -1,0 +1,63 @@
+<div class="Registro-box">
+    <h2>Registrar Cliente</h2>
+    <hr>
+    <form [formGroup]="myFormRegistro" autocomplete="off">
+        <div class="form-container">
+            <div class="form-column">
+              <div class="user-box">
+                <input matInput autocomplete="off" name="documento" formControlName="documento" type="text">
+                <label>Identificacion</label>
+                <span *ngIf="this.myFormRegistro.get('documento')?.errors?.['required'] && this.myFormRegistro.get('documento')?.touched">
+                  Introduzca la Identificacion
+                </span>
+              </div>
+          
+              <div class="user-box">
+                <input matInput autocomplete="off" name="nombre" type="text" formControlName="nombre">
+                <label>Nombre</label>
+                <span *ngIf="this.myFormRegistro.get('nombre')?.errors?.['required'] && this.myFormRegistro.get('nombre')?.touched">
+                  Introduzca los Nombres
+                </span>
+              </div>
+          
+              <div class="user-box">
+                <input matInput autocomplete="off" name="apellido" formControlName="apellido" type="text">
+                <label>Apellido</label>
+                <span *ngIf="this.myFormRegistro.get('apellido')?.errors?.['required'] && this.myFormRegistro.get('apellido')?.touched">
+                  Introduzca los Apellidos
+                </span>
+              </div>   
+            </div>
+          
+            <div class="form-column">
+              <div class="user-box">
+                <input matInput autocomplete="off" name="direccion" formControlName="direccion" type="text">
+                <label>Direccion</label>
+                <span *ngIf="this.myFormRegistro.get('direccion')?.errors?.['required'] && this.myFormRegistro.get('direccion')?.touched">
+                  Introduzca los Apellidos
+                </span>
+              </div>   
+          
+              <div class="user-box">
+                <input matInput autocomplete="off" name="correo" formControlName="correo" type="text" autocomplete="off">
+                <label>Correo</label>
+                <span *ngIf="this.myFormRegistro.get('correo')?.errors?.['required'] && this.myFormRegistro.get('correo')?.touched">
+                  Introduzca un correo valido
+                </span>
+              </div>
+            </div>
+          </div>
+          
+    
+        <div>
+            <button type="submit" [disabled]="!this.myFormRegistro.valid" (click)="guardar(myFormRegistro)">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Guardar
+            </button>
+        </div>
+    </form>
+
+</div>

@@ -47,11 +47,11 @@ export class EquiposComponent {
       }
     )
 
-    this.usuarioS.getPersonas().subscribe(
-      (usuario:any)=>{
-        this.usuarioSe=usuario
-      }
-    )
+    // this.usuarioS.getPersonas().subscribe(
+    //   (usuario:any)=>{
+    //     this.usuarioSe=usuario
+    //   }
+    // )
 
     this.equipo.getCategoria().subscribe(
       (categoria: any) => {

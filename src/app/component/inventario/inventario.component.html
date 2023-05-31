@@ -1,0 +1,206 @@
+<mat-drawer-container autosize>
+    <mat-drawer class="example-sidenav cont" #registrarProd position="end" mode='over'>
+        <app-productos></app-productos>
+    </mat-drawer>
+    <h1 class="cont">Ingresar Inventario</h1>
+    <div class="form-group row cont">
+        <label class="col-3 col-form-label">Subir Inventario</label>
+        <div class="col-8">
+            <input class="form-control" type="file" name="logoEmpresa" ngModel>
+        </div>
+    </div>
+    <div class="form-group row cont">
+        <div class="col-2">
+            <button  class="btn btn-outline-primary btn-block">
+                Importar Inventario
+            </button>    
+        </div>
+        <div class="col-2">
+            <button class="btn btn-outline-primary btn-block" (click)="registrarProd.toggle()">
+                Ingresar Producto
+            </button>
+        </div>  
+    </div>
+    <hr>
+
+    <div class="table-container mat-elevation-z8 cont">
+        <mat-table [dataSource]="dataSource" matSort>
+            <!-- Position Column -->
+            <ng-container class="codigoCol" matColumnDef="codigo" >
+                <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header> 
+                    Codigo
+                </mat-header-cell>
+                <mat-cell mat-cell *matCellDef="let element"> {{element.codigo}} </mat-cell>
+            </ng-container>
+
+            <!-- Nombre Column -->
+            <ng-container matColumnDef="descripcionProducto">
+                <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header> Descripcion de producto 
+                </mat-header-cell>
+                <mat-cell mat-cell *matCellDef="let element"> {{element.descripcionProducto}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="costo">
+                <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header> Costo
+                </mat-header-cell>
+                <mat-cell mat-cell *matCellDef="let element"> {{element.costo}} </mat-cell>
+            </ng-container>
+
+            <!-- Nombre Column -->
+            <ng-container matColumnDef="precio">
+                <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header> Precio
+                </mat-header-cell>
+                <mat-cell mat-cell *matCellDef="let element"> {{element.precio}} </mat-cell>
+            </ng-container>
+
+
+            <ng-container matColumnDef="unidadAlmacen">
+                <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header> Unidad Almacen
+                </mat-header-cell>
+                <mat-cell mat-cell *matCellDef="let element"> {{element.unidadAlmacen}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="cantidadMinima">
+                <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header> Cantidad Minima
+                </mat-header-cell>
+                <mat-cell mat-cell *matCellDef="let element"> {{element.cantidadMinima}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="utilidad">
+                <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header> Utilidad
+                </mat-header-cell>
+                <mat-cell mat-cell *matCellDef="let element"> {{element.utilidad}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="facturarSinExistencia">
+                <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header> Facturar sin existencia
+                </mat-header-cell>
+                <mat-cell mat-cell *matCellDef="let element"> {{element.facturarSinExistencia}} </mat-cell>
+            </ng-container>
+            
+            <ng-container matColumnDef="impuestos">
+                <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header> Impuestos
+                </mat-header-cell>
+                <mat-cell mat-cell *matCellDef="let element"> {{element.impuestos}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="categoria">
+                <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header> Categoria
+                </mat-header-cell>
+                <mat-cell mat-cell *matCellDef="let element"> {{element.categoria}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="nombreBodega">
+                <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header> Nombre Bodega
+                </mat-header-cell>
+                <mat-cell mat-cell *matCellDef="let element"> {{element.nombreBodega}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="codigoFabricante">
+                <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header> Codigo Fabricante
+                </mat-header-cell>
+                <mat-cell mat-cell *matCellDef="let element"> {{element.codigoFabricante}} </mat-cell>
+            </ng-container>
+
+            
+            <!-- Lugar Column -->
+            <ng-container matColumnDef="impuestoVentas">
+                <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header> Impuesto Ventas
+                </mat-header-cell>
+                <mat-cell mat-cell *matCellDef="let element"> {{element.impuestoVentas}} </mat-cell>
+            </ng-container>
+
+            <!-- logo Column -->
+            <ng-container matColumnDef="impuestoCompras">
+                <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header> Impuesto Compras </mat-header-cell>
+                <mat-cell mat-cell *matCellDef="let element"> {{element.impuestoCompras}} </mat-cell>
+            </ng-container>
+
+            <!-- Organizador Column -->
+            <ng-container matColumnDef="nroSeries">
+                <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header> Nro Series
+                </mat-header-cell>
+                <mat-cell mat-cell *matCellDef="let element"> {{element.nroSeries}} </mat-cell>
+            </ng-container>
+
+            <!-- Organizador Column -->
+            <ng-container matColumnDef="unidadVenta">
+                <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header> Unidad  Venta
+                </mat-header-cell>
+                <mat-cell mat-cell *matCellDef="let element"> {{element.unidadVenta}}
+                </mat-cell>
+            </ng-container>
+            <!-- Organizador Column -->
+            <ng-container matColumnDef="unidadCompra">
+                <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header> Unidad  Compra
+                </mat-header-cell>
+                <mat-cell mat-cell *matCellDef="let element"> {{element.unidadCompra}}
+                </mat-cell>
+            </ng-container>
+
+            <!-- Organizador Column -->
+            <ng-container matColumnDef="equivalenciaCompra">
+                <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header> Equivalencia Compra
+                </mat-header-cell>
+                <mat-cell mat-cell *matCellDef="let element"> {{element.equivalenciaCompra}}
+                </mat-cell>
+            </ng-container>
+            <!-- Organizador Column -->
+            <ng-container matColumnDef="ubicacion">
+                <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header> Ubicacion
+                </mat-header-cell>
+                <mat-cell mat-cell *matCellDef="let element"> {{element.ubicacion}}
+                </mat-cell>
+            </ng-container>
+
+            <!-- Organizador Column -->
+            <!-- <ng-container matColumnDef="categorias">
+                <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header> Categorias </mat-header-cell>
+                <mat-cell mat-cell *matCellDef="let element">
+                    <ng-container *ngIf="element.boolCategoria">
+                        <ul *ngFor="let categoria of element.categorias">
+                            <li>{{categoria.nombre}} {{categoria.genero}}</li>
+                        </ul>
+                    </ng-container>
+                    <label *ngIf="!element.boolCategoria">
+                        Ingresar Categorias
+                    </label>
+                </mat-cell>
+            </ng-container> -->
+
+            <!-- Organizador Column -->
+            <ng-container matColumnDef="acciones">
+                <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header> Acciones
+                </mat-header-cell>
+                <!-- <mat-cell mat-cell *matCellDef="let element">
+                    <a mat-mini-fab class="Accent" title="Ver Campeonato"
+                        (click)="verCampeonato(element.id)">
+                        <mat-icon>search </mat-icon>
+                    </a>
+
+                    <a mat-mini-fab title="Agregar Equipos" (click)="ingresoEquipos(element.id)">
+                        <mat-icon color="primary">person_add</mat-icon>
+                    </a>
+
+                    <a mat-mini-fab title="Editar Campeonato" (click)="edit.toggle()"
+                        (click)="editarCampeonato(element.id)">
+                        <mat-icon color="primary">edit</mat-icon>
+                    </a>
+
+                    <a mat-mini-fab title="Eliminar Campeonato" (click)="eliminarCampeonato(element.id)">
+                        <mat-icon color="warn">delete_outline</mat-icon>
+                    </a>
+
+                </mat-cell> -->
+            </ng-container>
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;">
+            </mat-row>
+        </mat-table>
+
+        <mat-paginator  [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+    </div>
+
+
+
+</mat-drawer-container>

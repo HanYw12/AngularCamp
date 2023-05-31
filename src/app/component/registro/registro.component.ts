@@ -1,11 +1,8 @@
-import { JsonPipe } from '@angular/common';
-import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { Form, UntypedFormBuilder } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { RolesService } from 'src/app/service/roles.service';
+import { empresaI } from 'src/app/service/empresa.service';
 import { UserService } from 'src/app/service/user.service';
-import { ValidacionService } from 'src/app/utils/validacion.service';
 
 @Component({
   selector: 'app-registro',
@@ -14,68 +11,78 @@ import { ValidacionService } from 'src/app/utils/validacion.service';
 })
 export class RegistroComponent {
 
-  usuarioE: any;
-  rolesSe: any;
-  usuarioT:any;
-  usu:any;
-  mostrar = false;
+  myFormRegistro: FormGroup;
 
-  constructor(private fb: UntypedFormBuilder,
+  constructor(private fb: FormBuilder,
     private router: Router,
-    private validadores: ValidacionService,
-    private usuarioS: UserService,
-    private rolesS: RolesService) {
-
-    this.rolesS.getRoles().subscribe(
-      (roles: any) => {
-        this.rolesSe = roles;
-      }
-    )
-
+    private usuarioS: UserService) {
+    //Validaciones de Campos
+    this.myFormRegistro = this.fb.group({
+      nombre: ['', [Validators.required]],
+      usuario: ['', [Validators.required]],
+      apellido: ['', [Validators.required]],
+      documento: ['', [Validators.required]],
+      correo: ['', [Validators.required]],
+      contrasena: ['', [Validators.required]],
+      //roles: ['', [Validators.required]],
+      genero: ['', [Validators.required]],
+      fechaNacimiento: ['', [Validators.required]]
+    });
   }
 
   guardar(usuario: any) {
-    this.usu={
-      usuarios : usuario.value,
-      roles : usuario.value.roles
-    }
-    console.log(this.usu);
-      return this.usuarioS.postPersonaguardar(this.usu).subscribe(
-         (usu:any)=>{
-           if(usu!=null){
-             alert("usuario creado");
-             this.router.navigate(['/login']);
-           }
-        },
-        (error:any)=>{
-          alert(error.error.mensajeTecnico);
+    return this.usuarioS.postPersonaguardar(usuario).subscribe(
+      (usu: any) => {
+        if (usu != null) {
+          this.usuarioS.Toast.fire({
+            icon: 'success',
+            title: "usuario creado",
+            background: 'linear-gradient(#006992, #2E1760)' ,
+          });                    
+          this.router.navigate(['/login']);
         }
-        );
-    
+      },
+      (error: any) => {
+        this.usuarioS.Toast.fire({
+          icon: 'error',
+          title: error.error.mensajeTecnico,
+          background: 'linear-gradient(#006992, #2E1760)' ,
+        });
+
+      }
+    );
   }
-
-
-
-
-
 }
 
 
 export interface usuarioI {
-  id?: number,
+  idUsuarios?: number,
   nombre: string,
   apellido: string,
-  cedula: string,
+  usuario:string,
+  documento: string,
   contrasena: string,
   correo: string,
   fechaNacimiento: Date,
-  rol: rolI,
-  equipo?: equipoI
+  establesimientoId:establesimientoI,
+  direccion:string,
+  telefono:string,
+  celular:string,
+
 }
 
 export interface rolI {
   id: number,
   rol: string
+}
+
+export interface establesimientoI {
+  id: number,
+  nombre:string,
+  empresaId: empresaI,
+  codigo: string,
+  direccion: string,
+  estado: string,
 }
 
 export interface equipoI {

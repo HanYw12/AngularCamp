@@ -1,8 +1,40 @@
-
-mat-drawer-container{
-    height:100%  
+/* .btn {
+    margin-left: 20px;
 }
 
-.btn{
-    margin-left: 20px;
+.login-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    padding: 40px;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(#006992, #2E1760);
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
+    border-radius: 10px;
+} */
+/* mat-drawer-container {
+    height: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+} */
+
+mat-table{
+    background: transparent;
+}
+
+mat-drawer-container {
+    width:100%; 
+    height: calc(110vh - 100px); 
+    background: #efefef;
+}
+  
+
+mat-paginator{
+    background: transparent;
+}
+
+app-navbar{
+    background: transparent;
+
 }

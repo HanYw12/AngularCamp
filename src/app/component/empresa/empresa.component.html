@@ -1,0 +1,109 @@
+<div class="main_content container">
+
+    <h1>Ingresar Nueva Empresa</h1>
+    <hr>
+    <form autocomplete="off"  (ngSubmit)="guardar(formaGuardar.value)" #formaGuardar="ngForm">
+        <div>
+            <div class="form-group row">
+                <label class="col-3 col-form-label">Logo de la Empresa</label>
+                <div class="col-8">
+                    <input class="form-control" type="file" name="logoEmpresa" ngModel>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-3 col-form-label">Razon Social</label>
+                <div class="col-8">
+                    <input class="form-control" type="text" name="razonSocial" ngModel placeholder="Razon Social">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-3 col-form-label">RUC</label>
+                <div class="col-8">
+                    <input class="form-control" type="text" name="ruc" ngModel placeholder="RUC">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-3 col-form-label">Direccion Matriz</label>
+                <div class="col-8">
+                    <input class="form-control" type="text" name="direccionMatriz" ngModel placeholder="Direccion Matriz">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-3 col-form-label">Agente de Retencion</label>
+                <div class="col-8">
+                    <input class="form-control" type="number" name="agenteRetencion" ngModel placeholder="Agente de Retencion">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-3 col-form-label">Contribuyente Especial</label>
+                <div class="col-8">
+                    <input class="form-control" type="number" name="contribuyenteEspecial" ngModel placeholder="Contribuyente Especial">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-3 col-form-label">Obligado a llevar Contabilidad</label>
+                <div class="col-8">
+                    <input  type="checkbox" name="obligadoContabilidad" ngModel>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-3 col-form-label">Regimen Rimpe</label>
+                <div class="col-8">
+                    <input type="checkbox" name="regimenRimpe" ngModel>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-3 col-form-label">Representante Legal</label>
+                <div class="col-8">
+                    <input class="form-control" type="number" name="cedula" ngModel placeholder="Representante Legal">
+                </div>
+            </div>
+
+            <br>
+            <!-- <div class="form-group row">
+                <label class="col-2 col-form-label">Categorias</label>
+                <div class="col-8 ">
+                    <div class="chip-list-wrapper">
+                        <mat-chip-list #chipList>
+                            <ng-container *ngFor="let select of selectData">
+                                <mat-chip class="cardinal-colors" (click)="removeChip(select)">
+                                    {{ select.nombre }} {{ select.genero }}
+                                    <mat-icon class="mat-chip-remove">cancel</mat-icon>
+                                </mat-chip>
+                            </ng-container>
+                        </mat-chip-list>
+                    </div>
+                    <mat-form-field [style.width.%]="100">
+                        <input matInput type="text" [placeholder]="placeholder" [matAutocomplete]="auto"
+                            [formControl]="selectControl">
+                    </mat-form-field>
+                    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                        <mat-option *ngFor="let data of categoriaSe">
+                            <div (click)="optionClicked($event, data)">
+                                <mat-checkbox [checked]="data.id" (change)="toggleSelection(data)"
+                                    (click)="$event.stopPropagation()">
+                                    {{ data.nombre }} {{ data.genero }}
+                                </mat-checkbox>
+                            </div>
+                        </mat-option>
+                    </mat-autocomplete>
+                </div>
+            </div> -->
+        </div>
+        <div class="form-group row">
+            <div class="form-group row">
+                <div class="input-group col-md-8">
+                    <button type="submit" class="btn btn-outline-primary btn-block">
+                        Guardar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+    </div>
+    

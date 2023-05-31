@@ -44,10 +44,26 @@ import { RouterModule } from '@angular/router';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { MatSortModule } from '@angular/material/sort';
 import { CampeonatoeditComponent } from './component/campeonatoedit/campeonatoedit.component';
+import { HeaderComponent } from './component/header/header.component';
+import { LeftMenuComponent } from './component/left-menu/left-menu.component';
+import { MatDividerModule } from '@angular/material/divider';
+import { MenuComponent } from './component/menu/menu.component';
+import { SidenavService } from './service/sidenav.service';
+import { FacturaComponent } from './component/factura/factura.component';
+import { EmpresaComponent } from './component/empresa/empresa.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatCommonModule } from '@angular/material/core';
+import { ConfirmDialogComponent } from './component/shared/confirm-dialog/confirm-dialog.component';
+import { ProductosComponent } from './component/productos/productos.component';
+import { InventarioComponent } from './component/inventario/inventario.component';
+import { IngresoclienteComponent } from './component/ingresocliente/ingresocliente.component';
 
 
 
 @NgModule({
+  entryComponents:[
+    ConfirmDialogComponent
+  ],
   declarations: [
     AppComponent,
     NavbarComponent,
@@ -60,6 +76,16 @@ import { CampeonatoeditComponent } from './component/campeonatoedit/campeonatoed
     SelectComponent,
     SelectPadreComponent,
     CampeonatoeditComponent,
+    HeaderComponent,
+    LeftMenuComponent,
+    MenuComponent,
+    FacturaComponent,
+    EmpresaComponent,
+    ConfirmDialogComponent,
+    ProductosComponent,
+    InventarioComponent,
+    IngresoclienteComponent,
+    
   ],
   imports: [
 
@@ -86,10 +112,17 @@ import { CampeonatoeditComponent } from './component/campeonatoedit/campeonatoed
     MatSortModule,
     MatSelectModule,
 
+    MatDividerModule,
+    MatListModule,
+    MatToolbarModule,
+    
+    MatButtonModule, 
+    MatDialogModule,
+    MatCommonModule,
 
     
   ],
-  providers: [],
+  providers: [SidenavService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

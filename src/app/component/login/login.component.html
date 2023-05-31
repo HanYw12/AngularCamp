@@ -1,22 +1,3 @@
-<!-- <div class="login">
-        <form class=" custom-form" v-if="!submitted" (ngSubmit)="ingresar(formaIngresar)" #formaIngresar="ngForm">
-                    <h1>Usuario</h1><input autocomplete="off" 
-                        name="usuario"
-                        ngModel
-                        requiredtype="text">
-                        <h1>Contraseña</h1><input autocomplete="off" 
-                        name="contrasena"
-                        ngModel
-                        required
-                        type="password"  v-on:blur="passwordBlured = true">
-                    <div class="mb-3"> <button type="submit" class="btn btn-dark w-100">Login</button> </div>
-                    <button (click)="registro()"  class="btn btn-dark w-100">Registrarse</button>
-                </form>
-                <div class="success-data" v-else>
-                </div>
-            </div>
- -->
-
 <mat-drawer-container class="example-container" autosize>
   <mat-drawer class="example-sidenav" #registrar position="end" mode='over'>
       <app-registro></app-registro>
@@ -34,22 +15,22 @@
         </div>
         <tr>
           <td>
-            <a (click)="ingresar(formaIngresar)">
+            <button (click)="ingresar(formaIngresar)">
               <span></span>
               <span></span>
               <span></span>
               <span></span>
               Ingresar
-            </a>
+            </button>
           </td>
           <td>
-            <a (click)="registrar.toggle()">
+            <button (click)="registrar.toggle()">
               <span></span>
               <span></span>
               <span></span>
               <span></span>
               Registrarse
-            </a>
+            </button>
           </td>
         </tr>
       </form>

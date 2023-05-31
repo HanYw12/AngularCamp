@@ -1,0 +1,25 @@
+.sidenav_container {
+  min-width: 80px; 
+  height: calc(100vh - 200px);
+  
+}
+
+mat-icon{
+  color: #2E1760;
+}
+
+mat-icon-button{
+  margin-left: 8px;
+}
+
+span{
+  color: #2E1760;
+  margin: 5px;
+}
+
+.jim {
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+  border-radius: 50%;
+}

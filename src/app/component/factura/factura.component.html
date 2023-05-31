@@ -1,0 +1,305 @@
+<div id="factura">
+<header class="row">
+  <div class="logoholder text-center">
+    <img class="imagen-principal"
+      src="https://img.freepik.com/vector-gratis/concepto-programadores-diseno-plano_23-2147859926.jpg?w=740&t=st=1677275661~exp=1677276261~hmac=0ad6c57fb4a02c1e5f913fb706ca9ad5c202137fbe9cdc50cd12f7aa9226289b">
+  </div><!--.logoholder-->
+
+  <div class="me">
+
+    <strong>{{this.usuarioS.establesimientoId.empresaId.razonSocial}}</strong><br>
+    <em>
+      Direccion: {{this.usuarioS.establesimientoId.empresaId.direccionMatriz}}<br>
+    </em>
+    <em>
+      Direccion Matriz: {{this.usuarioS.establesimientoId.empresaId.direccionMatriz}}<br>
+    </em> 
+    <em>
+      {{this.usuarioS.establesimientoId.empresaId.ruc}}<br>
+    </em> 
+    <em *ngIf="this.usuarioS.establesimientoId.empresaId.contribuyenteEspecial">Contribuyente Especial
+      Nro:{{this.usuarioS.establesimientoId.empresaId.contribuyenteEspecial}}<br></em>
+    OBLIGADO A LLEVAR CONTABILIDAD: <em *ngIf="this.usuarioS.establesimientoId.empresaId.obligadoContabilidad">SI
+      <br></em>
+    <em *ngIf="!this.usuarioS.establesimientoId.empresaId.obligadoContabilidad">NO <br></em>
+
+  </div><!--.me-->
+
+  <div class="info">
+
+    Web: <a href="http://volkerotto.net">www.sistemasweb.la</a><br>
+    E-mail: <a href="mailto:info@obedalvarado.pw">correo@obedalvarado.pw</a><br>
+    Tel: +456-345-908-559<br>
+    Twitter: @alvarado_obed
+
+  </div><!-- .info -->
+
+  <!-- <div class="bank">
+     
+        Datos bacarios: <br>
+        Titular de la cuenta: <br>
+        IBAN: <br>
+        BIC:
+    
+    </div>.bank -->
+
+</header>
+
+
+<div class="row section">
+  <div class="col-2">
+    <h1>{{this.usuarioS.establesimientoId.empresaId.razonSocial}}</h1>
+  </div><!--.col-->
+
+  <div class="col-2 text-center details">
+    <strong>Fecha:</strong>
+    {{ currentDate | date:'dd/MM/yyyy'}}<br>
+    <!-- <strong>Factura:</strong>
+    100<br> -->
+  </div><!--.col-->
+  <div class="col-2">
+    <p class="client">
+      <strong>RUC: </strong>{{this.usuarioS.establesimientoId.empresaId.ruc}}<br>
+      <!-- <strong>Factura No: </strong>001-011-034338914<br> -->
+      <!-- <strong>Numero de Autorizacion: </strong><br>
+        1502202301179128754100120010110343389142936506910
+        <br> -->
+      <strong>Ambiente: </strong><em
+        *ngIf="this.usuarioS.establesimientoId.empresaId.ambiente==2">Produccion<br></em><em
+        *ngIf="this.usuarioS.establesimientoId.empresaId.ambiente==1">Pruebas<br></em>
+      <strong>Emision: </strong><em *ngIf="this.usuarioS.establesimientoId.empresaId.emision==1">Normal<br></em>
+    </p>
+  </div><!--.col-->
+  <div class="col-2">
+    <!-- <p  class="client"> -->
+    <div class="col-2">
+      <strong>Razón Social / Nombres y Apellidos:</strong>
+    </div>
+    <div class="col-2">
+      <em *ngIf="objCliente!=null">{{objCliente.nombre}} {{objCliente.apellido}}</em>
+    </div>
+    <div class="col-2">
+      <strong>Identificación: </strong>
+    </div>
+    <div class="col-2">
+      <input matInput class="form-control" type="text" name="identificacionCli" [(ngModel)]="identificacionCli" />
+    </div>
+    <!-- <strong>Fecha de Emisión: </strong><br> -->
+    <div class="col-2">
+      <strong>Guía de Remisión:</strong>
+    </div>
+    <div class="col-2">
+      <input matInput class="form-control" type="text" name="giaRemicion" [(ngModel)]="giaRemicion" />
+    </div>
+    <div class="col-2">
+      <a class="control newRow" (click)="buscarCliente()">Buscar Cliente</a>
+    </div>
+    <!-- </p> -->
+  </div><!--.col-->
+</div><!--.row-->
+<div class="row section" style="margin-top:0.3rem">
+  <div class="col-1">
+    <table style='width:100%'>
+      <thead>
+        <tr class="invoice_detail">
+          <th width="25%">Vendedor</th>
+          <th width="25%">Sucursal </th>
+          <!-- <th width="20%">Enviar por</th> -->
+          <th width="30%">Forma de Pago</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="invoice_detail">
+          <td width="25%">{{usuarioS.nombre}} {{usuarioS.apellido}}</td>
+          <td width="25%">{{usuarioS.establesimientoId.nombre}} </td>
+          <!-- <td width="20%">DHL</td> -->
+          <td width="30%">
+            <input type="text" matInput [matAutocomplete]="tipoPago" [(ngModel)]="objFactura.formaPago.valor1">
+            <mat-autocomplete #tipoPago="matAutocomplete">
+              <mat-option *ngFor="let option of formaPago " [value]="option.valor1">
+                {{option.valor1}}
+              </mat-option>
+            </mat-autocomplete>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div><!--.row-->
+
+<div class="invoicelist-body">
+  <table>
+    <thead>
+      <th width="5%">Cod. Principal</th>
+      <th width="5%">Cod. Auxiliar</th>
+      <th width="5%">Cant</th>
+      <th width="45%">Descripción</th>
+      <th width="9%">Detalle Adicional</th>
+      <th width="9%">Precio Unitario</th>
+      <th width="9%">Descuento</th>
+      <th width="9%">IVA</th>
+      <th width="9%">Sub Total</th>
+      <th width="9%">Precio Total</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let detalle of objDetallesFactura; let i = index  ">
+        <td>
+          <a class="control removeRow" (ngModelChange)="calculoTotal()" (click)="eliminarDetalle(detalle.idDocumentoDet)">x</a>
+          <input (keydown)="agregarProductoCod($event,detalle.idDocumentoDet)" type="text" (ngModelChange)="calculoTotal()" matInput
+            [(ngModel)]="detalle.productoId.codigo">
+        </td>
+        <td>
+          <input (keypress)="agregarProducto(detalle.idDocumentoDet)" type="text" (ngModelChange)="calculoTotal()" matInput
+            [(ngModel)]="detalle.productoId.auxCodigo">
+        </td>
+        <td><span><input id="cantidad" type="text" [(ngModel)]="detalle.cantidad"
+              (ngModelChange)="calculoTotal()" /></span></td>
+        <td>
+          <input (keyup)="agregarProducto(detalle.idDocumentoDet)" (ngModelChange)="calculoTotal()" type="text" matInput
+            [(ngModel)]="detalle.productoId.producto" [matAutocomplete]="auto">
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let option of productos " (onSelectionChange)="seleccionarProd(i,option)"
+              [value]="option.producto">
+              {{option.producto}}
+            </mat-option>
+          </mat-autocomplete>
+        </td>
+        <td>
+          <input type="text" matInput [(ngModel)]="detalle.observacionDetalle" [matAutocomplete]="auto">
+        </td>
+        <td> <input id="cantidad" type="text" [(ngModel)]="detalle.productoId.valorUnitario"
+            (ngModelChange)="calculoTotal()" /></td>
+        <td> </td>
+        <!-- <td> <input id="cantidad" type="text" [(ngModel)]="{{detalle.iva | number:'1.2-2'}}" (ngModelChange)="calculoTotal()"/></td> -->
+        <td> {{detalle.iva | number:'1.2-2'}}</td>
+        <td> {{detalle. subTotal | number:'1.2-2'}}</td>
+        <td> {{detalle.valorTotal | number:'1.2-2' }} </td>
+        <!-- <td> {{detalle.producto.valorUnitario*detalle.cantidad}}</td> -->
+      </tr>
+    </tbody>
+  </table>
+  <a class="control newRow" (click)="agregarDetalle()">+ Nueva fila</a>
+  <br>
+</div><!--.invoice-body-->
+
+<div class="invoicelist-footer">
+  <div class="col-7 adicional">
+    <div class="col-12">
+      Informacion Adicional
+    </div>
+    <div class="col-12" *ngIf="objCliente.direccion!=null">
+      <div class="col-6">
+        Direcion
+      </div>
+      <div class="col-6">
+        {{objCliente.direccion}}
+      </div>
+    </div>
+    <div class="col-12" *ngIf="objCliente.correo!=null">
+      <div class="col-6">
+        Email's
+      </div>
+      <div class="col-6">
+        <em>
+          {{objCliente.correo}} <br>
+        </em>
+      </div>
+    </div>
+
+    <div class="col-12" *ngIf="objCliente.telefono!=null">
+      <div class="col-6">
+        Telefono
+      </div>
+      <div class="col-6">
+        <em>
+          {{objCliente.telefono}} <br>
+        </em>
+      </div>
+    </div>
+    <div class="col-12" *ngIf="objCliente.celular!=null">
+      <div class="col-6">
+        Celular
+      </div>
+      <div class="col-6">
+        <em>
+          {{objCliente.celular}} <br>
+        </em>
+      </div>
+    </div>
+  </div>
+  <div class="col-3">
+    <table class="total">
+      <tr class="taxrelated">
+        <td width="75%">SUBTOTAL 12%:</td>
+        <td width="25%" id="total_tax">
+          {{objFactura.subTotalIva12 | number:'1.2-2'}}
+        </td>
+      </tr>
+      <tr class="taxrelated">
+        <td>SUBTOTAL IVA 0%:</td>
+        <td id="total_tax">
+          {{objFactura.subTotalIva0 | number:'1.2-2'}}
+        </td>
+      </tr>
+      <tr class="taxrelated">
+        <td>SUBTOTAL NO OBJETO IVA:</td>
+        <td id="total_tax">
+          {{objFactura.noObjetoIvaTotal| number:'1.2-2'}}
+        </td>
+      </tr>
+      <!-- <tr class="taxrelated">
+          <td>SUBTOTAL EXENTO IVA:</td>
+          <td id="total_tax">
+
+          </td>
+        </tr> -->
+      <tr class="taxrelated">
+        <td>SUBTOTAL SIN IMPUESTOS:</td>
+        <td id="total_tax">
+          {{objFactura.subTotal| number:'1.2-2'}}
+        </td>
+      </tr>
+      <tr class="taxrelated">
+        <td>DESCUENTO:</td>
+        <td id="total_tax">
+          {{objFactura.descuento| number:'1.2-2'}}
+        </td>
+      </tr>
+      <tr class="taxrelated" *ngIf="boolIce">
+        <td>ICE {{intIce}}% : </td>
+        <td id="total_tax">
+          {{objFactura.subTotalIce| number:'1.2-2'}}
+        </td>
+      </tr>
+      <tr class="taxrelated">
+        <td>IVA 12%:</td>
+        <td id="total_tax">
+          {{objFactura.iva| number:'1.2-2'}}
+        </td>
+      </tr>
+      <tr class="taxrelated" *ngIf="boolIRBPNR">
+        <td>IRBPNR:</td>
+        <td id="total_tax"></td>
+      </tr>
+      <tr class="taxrelated">
+        <td>PROPINA:</td>
+          <input id="total_tax" type="number" (keyup)="calculoTotal()" [(ngModel)]="objFactura.propina">
+      </tr>
+      <tr class="taxrelated">
+        <td>VALOR TOTAL:</td>
+        <td id="total_tax">
+          {{objFactura.valorTotal| number:'1.2-2'}}
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+<footer class="row">
+</footer>
+
+</div>
+
+<a class="control newRow boton-flotante" (click)="generarFactura()">Generar Factura</a>
+
+<div #modalContainer></div>

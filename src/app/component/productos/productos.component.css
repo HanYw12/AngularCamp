@@ -1,0 +1,20 @@
+.form-control{
+    margin-top: 5px;
+}
+.form-select{
+    margin-top: 5px;
+}
+.form-check{
+    margin-top: 5px;
+}
+
+
+.row{
+    font-size: small;
+}
+
+.main_content{
+    position: absolute;
+    top : 55px;
+    margin-bottom: 10px;
+}
