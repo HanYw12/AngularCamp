@@ -25,23 +25,21 @@ export class InventarioComponent implements OnInit {
   ) 
   {  
     this.usuarioSe = JSON.parse(this.session.get('usuario'));
-    console.log(this.usuarioSe);
-
     this.empresaS.postInventario(this.usuarioSe.establesimientoId.empresaId).subscribe(
       async (parametros: any) => {
         console.log(await parametros);
         // this.prod = parametros.data;
         let newProd = parametros.data.map(
-          (element : productosI) => 
+          (element : any) => 
           {
             return {
-            codigo :             element.codigo,
+            codigo :             element.productoId.codigo,
             descripcionProducto : element.producto, 
-            precio:               element.valorUnitario, 
-            costo: 5, 
-            unidadAlmacen: 'unidad', 
-            cantidadMinima: 5, 
-            utilidad: 50, 
+            precio:               element.productoId.valorUnitario, 
+            costo: 0, 
+            unidadAlmacen: element.productoId.unidadMedida, 
+            cantidadMinima: '', 
+            utilidad: '', 
             facturarSinExistencia: false, 
             impuestos: 'IVA', 
             categoria: 'Electrónica',
